@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostController;    #PostControlleri käyttöön
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +14,12 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', function () {   #Etusivu jolla kirjaudutaan/rekisteröidytään
+Route::get('/', function () {   #Etusivu vain jossa valitaan kirjaudu sivu tai rekisteröidy
     return view('welcome');
 });
 
-Auth::routes();
-Route::resource('todo', PostController::class);   #Resource controlleri käyttöön
+Auth::routes();    #Määrittää reitit käyttäjille ja kirjautuneille käyttäjille
+Route::resource('todo', PostController::class);   #Resource controlleri käyttöön jossa on toiminnat ja reitit
 
 
 
