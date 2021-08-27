@@ -7,16 +7,8 @@ use Illuminate\Http\Request;            //Voidaan ottaa lomakkeesta oleva tieto 
 use Illuminate\Support\Facades\DB;      //Query builder
 
 
-
-
-
 class PostController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');  #Kirjautunut käyttäjä pystyy käyttämään tätä controlleria.
-    }
 
     /**
      * Display a listing of the resource.
@@ -29,13 +21,12 @@ class PostController extends Controller
         $id = Auth::id();                                   //kirjautuneen käyttäjän id muuttujaan
 
         #Valitaan posts taulusta user_id:en mukaan olevat tehtävät.
-        $results = DB::table('users')                       //Innerjoin, käytetään taulu users
-        ->join('posts', 'users.id', "=", 'posts.user_id')   //Linkitetään users->posts, users id = posts taulussa olevaan user_id
-        ->where('posts.user_id', $id)                       //Valitaan posts taulusta user_id = käyttäjän id
+        $results = DB::table('posts')                       //valitaan posts taulu  
+        ->where('user_id', $id)                             //Valitaan posts taulusta user_id = käyttäjän id
         ->orderBy('posts.id', 'DESC')                       //Järjestyksessä posts id, uusin ensin. 
         ->get();                                            //Viimeistely toiminta
 
-        return view('todo.index',['results' => $results]);  //viedään käyttäjä index sivulle ja näytetään index sivulla tiedot
+        return view('todo.index',['results' => $results]);  //viedään käyttäjä index sivulle ja näytetään index sivulla data
     }
 
     /**
@@ -79,7 +70,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //Ei käytössä, jos olisi enemmän tietoa(dataa) niin sitten käyttöön.
+        //Ei käytössä, jos olisi enemmän tietoa(dataa) näytettävissä niin sitten käyttöön.
     }
 
     /**

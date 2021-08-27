@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('tehtava');      //Tehtava on varchar
             $table->string('status');       //Status on varchar
             $table->integer('user_id');     //user_id on numero
-            $table->timestamps();           //Pöytään oma row timestamps
+            $table->timestamps();           //tallennetaan aika
         });
 
     }

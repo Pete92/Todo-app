@@ -28,7 +28,6 @@
                 @endauth
             @endif
                 <h1 class="mt-3">ToDo Lista Harjoitustyö</h1>
-                <small>Tekijä Petri Järvenpää</small><br>
                 <small>Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})</small>
         </div>
     </body>
