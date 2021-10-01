@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\DB;      //Query builder
 class PostController extends Controller
 {
 
+
+    public function __construct() {     //kirjautuneella käyttäjällä on vain oikeus tähän controlleriin
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
